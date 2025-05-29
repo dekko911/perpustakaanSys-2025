@@ -1,7 +1,11 @@
+import { AuthLayout } from "../../layouts/auth";
+
 export const CirculationsPage = () => {
 	return (
-		<div>
-			<h1>Circulations Page</h1>
-		</div>
+		<AuthLayout>
+			<div>
+				<h1>Circulations Page</h1>
+			</div>
+		</AuthLayout>
 	);
 };

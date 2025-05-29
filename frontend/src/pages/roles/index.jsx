@@ -1,10 +1,10 @@
 import { AuthLayout } from "../../layouts/auth";
 
-export const BooksPage = () => {
+export const RolesPage = () => {
 	return (
 		<AuthLayout>
 			<div>
-				<h1>Books Page</h1>
+				<h1>Roles Page</h1>
 			</div>
 		</AuthLayout>
 	);

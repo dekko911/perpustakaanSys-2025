@@ -1,7 +1,11 @@
+import { AuthLayout } from "../../layouts/auth/index";
+
 export const UsersPage = () => {
 	return (
-		<div>
-			<h1>Users Page</h1>
-		</div>
+		<AuthLayout>
+			<div>
+				<h1>Users Page</h1>
+			</div>
+		</AuthLayout>
 	);
 };
