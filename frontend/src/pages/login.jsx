@@ -8,7 +8,7 @@ import { GuestLayout } from "../layouts/guest";
 export const LoginPage = () => {
 	return (
 		<GuestLayout>
-			<div className="p-10 w-130 z-10 motion-preset-focus-sm">
+			<div className="p-10 w-120 z-10 motion-preset-focus-sm">
 				<img
 					src="/src/assets/images/bookshead.png"
 					alt="logo"

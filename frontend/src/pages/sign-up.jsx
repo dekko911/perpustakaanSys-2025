@@ -11,7 +11,7 @@ export const SignUpPage = () => {
 				<img
 					src="/src/assets/images/bookshead.png"
 					alt="logo"
-					className="w-15 mx-auto mb-3"
+					className="w-15 mx-auto mb-5"
 				/>
 				<h1 className="text-center font-semibold text-xl mb-2">
 					Create an account
@@ -38,7 +38,7 @@ export const SignUpPage = () => {
 					/>
 
 					<LabelSignUp>Roles</LabelSignUp>
-					<InputSignUp type="text" name="roles" placeholder="user / cashier" />
+					<InputSignUp type="text" name="roles" placeholder="operator / user" />
 
 					<ButtonSignUp>Create account</ButtonSignUp>
 				</form>
@@ -48,7 +48,7 @@ export const SignUpPage = () => {
 						to="/"
 						className="underline underline-offset-1 ms-1.5 hover:text-white/70 duration-300"
 					>
-						Login
+						Log In
 					</Link>
 				</h1>
 			</div>

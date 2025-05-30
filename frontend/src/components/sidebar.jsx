@@ -1,6 +1,6 @@
 import { FaSyncAlt, FaUsers } from "react-icons/fa";
 import { FaUsersGear } from "react-icons/fa6";
-import { MdDashboard, MdLogout } from "react-icons/md";
+import { MdDashboard } from "react-icons/md";
 import { SiBookstack } from "react-icons/si";
 import { Link, useLocation } from "react-router";
 import { cn } from "../lib/utils";

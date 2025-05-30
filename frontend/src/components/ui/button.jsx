@@ -43,6 +43,7 @@ export const ButtonLogout = ({ className = "", onClick, ...props }) => {
 		>
 			<MdLogout />
 			Log Out
+			{/* bagaimana membuat pengkondisian jika element ini di HOVER ? */}
 		</button>
 	);
 };
