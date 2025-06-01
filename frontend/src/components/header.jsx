@@ -1,5 +1,5 @@
 import { FaSyncAlt, FaUser, FaUsers, FaUserSecret } from "react-icons/fa";
-import { MdDashboard } from "react-icons/md";
+import { MdCardMembership, MdDashboard } from "react-icons/md";
 import { SiBookstack } from "react-icons/si";
 import { useLocation } from "react-router";
 import { cn } from "../lib/utils";
@@ -20,7 +20,8 @@ export const Header = ({ className = "" }) => {
 					(location.pathname === "/users" && <FaUsers />) ||
 					(location.pathname === "/books" && <SiBookstack />) ||
 					(location.pathname === "/circulations" && <FaSyncAlt />) ||
-					(location.pathname === "/roles" && <FaUserSecret />)}
+					(location.pathname === "/roles" && <FaUserSecret />) ||
+					(location.pathname === "/members" && <MdCardMembership />)}
 
 				{/* path url name */}
 				<h1 className="font-semibold">
@@ -28,7 +29,8 @@ export const Header = ({ className = "" }) => {
 						(location.pathname === "/users" && "Users") ||
 						(location.pathname === "/books" && "Books") ||
 						(location.pathname === "/circulations" && "Circulations") ||
-						(location.pathname === "/roles" && "Roles")}
+						(location.pathname === "/roles" && "Roles") ||
+						(location.pathname === "/members" && "Members")}
 				</h1>
 			</div>
 

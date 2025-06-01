@@ -8,21 +8,24 @@ import {
 } from "../../components/ui/table";
 import { AuthLayout } from "../../layouts/auth";
 
-export const RolesPage = () => {
+export const MembersPage = () => {
 	return (
 		<AuthLayout>
 			<div className="flex flex-col">
 				<div className="flex">
-					<h1 className="font-semibold text-2xl">Roles Page</h1>
-					<InputSearch placeholder="Search Role . . ." className="ms-auto" />
+					<h1 className="font-semibold text-2xl">Members Page</h1>
+					<InputSearch placeholder="Search Member . . ." className="ms-auto" />
 				</div>
 
 				<Table>
 					<TableHead>
 						<TableRow>
 							<THeadCell>No.</THeadCell>
-							<THeadCell>Owner Role</THeadCell>
+							<THeadCell>Member Id (slug)</THeadCell>
 							<THeadCell>Name</THeadCell>
+							<THeadCell>Gender (L/P)</THeadCell>
+							<THeadCell>Grade</THeadCell>
+							<THeadCell>No Hanphone</THeadCell>
 							<THeadCell className="border-none">Action</THeadCell>
 						</TableRow>
 					</TableHead>

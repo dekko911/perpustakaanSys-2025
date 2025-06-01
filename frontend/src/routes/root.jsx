@@ -3,9 +3,10 @@ import { BooksPage } from "../pages/books";
 import { CirculationsPage } from "../pages/circulations";
 import { DashboardPage } from "../pages/dashboard";
 import { LoginPage } from "../pages/login";
+import { MembersPage } from "../pages/members";
+import { RolesPage } from "../pages/roles";
 import { SignUpPage } from "../pages/sign-up";
 import { UsersPage } from "../pages/users";
-import { RolesPage } from "../pages/roles";
 
 export const RootRoute = () => {
 	return (
@@ -18,6 +19,8 @@ export const RootRoute = () => {
 				<Route path="/dashboard" element={<DashboardPage />} />
 
 				<Route index element={<LoginPage />} />
+
+				<Route path="/members" element={<MembersPage />} />
 
 				<Route path="/roles" element={<RolesPage />} />
 

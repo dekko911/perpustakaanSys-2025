@@ -1,10 +1,36 @@
+import { InputSearch } from "../../components/ui/input";
+import {
+	Table,
+	TableBody,
+	TableHead,
+	TableRow,
+	THeadCell,
+} from "../../components/ui/table";
 import { AuthLayout } from "../../layouts/auth";
 
 export const BooksPage = () => {
 	return (
 		<AuthLayout>
-			<div>
-				<h1>Books Page</h1>
+			<div className="flex flex-col">
+				<div className="flex">
+					<h1 className="font-semibold text-2xl">Books Page</h1>
+					<InputSearch placeholder="Search Book . . ." className="ms-auto" />
+				</div>
+
+				<Table>
+					<TableHead>
+						<TableRow>
+							<THeadCell>No.</THeadCell>
+							<THeadCell>Book Id (slug)</THeadCell>
+							<THeadCell>Title Book</THeadCell>
+							<THeadCell>Author</THeadCell>
+							<THeadCell>Publisher</THeadCell>
+							<THeadCell>Year</THeadCell>
+							<THeadCell className="border-none">Action</THeadCell>
+						</TableRow>
+					</TableHead>
+					<TableBody></TableBody>
+				</Table>
 			</div>
 		</AuthLayout>
 	);

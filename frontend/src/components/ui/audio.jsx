@@ -3,7 +3,9 @@ import { FaPause, FaPlay } from "react-icons/fa";
 
 export const Audio = ({ audioSrc = "", audioType = "audio/wav" }) => {
 	const [isPlaying, setIsPlaying] = useState(false);
-	const audioRef = useRef(null);
+	const audioRef = useRef(null); // useRef bagaikan id, tidak bisa ada dua useRef dalam atrributes ref.
+
+	// engken carane pang nyak ne me skip re-rendering dalam element body ? jancuk.
 
 	const handlePlay = () => {
 		audioRef.current.play();
@@ -44,7 +46,7 @@ export const Audio = ({ audioSrc = "", audioType = "audio/wav" }) => {
 			</button>
 
 			{isPlaying ? (
-				<p className="ms-2">Rindik Bali</p>
+				<p className="ms-2">Pause Song</p>
 			) : (
 				<p className="ms-2">Play Song</p>
 			)}

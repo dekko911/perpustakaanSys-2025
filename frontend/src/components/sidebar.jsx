@@ -1,6 +1,6 @@
 import { FaSyncAlt, FaUsers } from "react-icons/fa";
 import { FaUsersGear } from "react-icons/fa6";
-import { MdDashboard } from "react-icons/md";
+import { MdCardMembership, MdDashboard } from "react-icons/md";
 import { SiBookstack } from "react-icons/si";
 import { Link, useLocation } from "react-router";
 import { cn } from "../lib/utils";
@@ -42,6 +42,7 @@ export const Sidebar = ({ className = "" }) => {
 					<MdDashboard className="w-5 h-5" />
 					Dashboard
 				</Link>
+
 				<Link
 					to="/users"
 					className={`flex items-center gap-x-2 py-1.5 px-2 rounded-md hover:bg-white/30 ${location.pathname === "/users" && `bg-white/15`}`}
@@ -49,6 +50,7 @@ export const Sidebar = ({ className = "" }) => {
 					<FaUsers className="w-5 h-5" />
 					Users
 				</Link>
+
 				<Link
 					to="/roles"
 					className={`flex items-center gap-x-2 py-1.5 px-2 rounded-md hover:bg-white/30 ${location.pathname === "/roles" && `bg-white/15`}`}
@@ -56,6 +58,15 @@ export const Sidebar = ({ className = "" }) => {
 					<FaUsersGear className="w-5 h-5" />
 					Roles
 				</Link>
+
+				<Link
+					to="/members"
+					className={`flex items-center gap-x-2 py-1.5 px-2 rounded-md hover:bg-white/30 ${location.pathname === "/members" && `bg-white/15`}`}
+				>
+					<MdCardMembership />
+					Members
+				</Link>
+
 				<Link
 					to="/books"
 					className={`flex items-center gap-x-2 py-1.5 px-2 rounded-md hover:bg-white/30 ${location.pathname === "/books" && `bg-white/15`}`}
@@ -63,6 +74,7 @@ export const Sidebar = ({ className = "" }) => {
 					<SiBookstack className="w-5 h-5" />
 					Books
 				</Link>
+
 				<Link
 					to="/circulations"
 					className={`flex items-center gap-x-2 py-1.5 px-2 rounded-md hover:bg-white/30 ${location.pathname === "/circulations" && `bg-white/15`}`}

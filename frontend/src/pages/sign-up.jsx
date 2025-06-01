@@ -38,7 +38,7 @@ export const SignUpPage = () => {
 					/>
 
 					<LabelSignUp>Roles</LabelSignUp>
-					<InputSignUp type="text" name="roles" placeholder="operator / user" />
+					<InputSignUp type="text" name="roles" placeholder="operator & user" />
 
 					<ButtonSignUp>Create account</ButtonSignUp>
 				</form>
