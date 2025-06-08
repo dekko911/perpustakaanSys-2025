@@ -1,4 +1,6 @@
+import { FiExternalLink } from "react-icons/fi";
 import { MdLogout } from "react-icons/md";
+import { Link } from "react-router";
 import { cn } from "../../lib/utils";
 
 export const ButtonLogin = ({ className, onClick, children, ...props }) => {
@@ -35,7 +37,7 @@ export const ButtonLogout = ({ className = "", onClick, ...props }) => {
 	return (
 		<button
 			className={cn(
-				"cursor-pointer text-start mx-3 font-semibold flex items-center gap-x-2 py-1.5 px-3.5 rounded-lg bg-zinc-500/50 hover:bg-zinc-500/80",
+				"cursor-pointer text-start mx-auto font-semibold flex items-center gap-x-2 py-1.5 px-3.5 rounded-lg bg-zinc-500/50 w-50 hover:bg-zinc-500/80",
 				className
 			)}
 			onClick={onClick}
@@ -45,5 +47,15 @@ export const ButtonLogout = ({ className = "", onClick, ...props }) => {
 			Log Out
 			{/* bagaimana membuat pengkondisian jika element ini di HOVER ? */}
 		</button>
+	);
+};
+
+// this button for DASHBOARD, and it's an static so no children
+export const ButtonDashboard = ({ to, className = "" }) => {
+	return (
+		<Link to={to} className={cn("flex items-center gap-x-1", className)}>
+			More Info
+			<FiExternalLink />
+		</Link>
 	);
 };

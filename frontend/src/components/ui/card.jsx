@@ -1,11 +1,25 @@
 import { cn } from "../../lib/utils";
 
-//the parent card container
+// this card profile
+export const ProfileCard = ({ className = "", children }) => {
+	return (
+		<div
+			className={cn(
+				"bg-zinc-500/50 w-50 py-3.5 px-3 flex items-center mb-2.5 mx-auto rounded-lg",
+				className
+			)}
+		>
+			{children}
+		</div>
+	);
+};
+
+// the parent card container for DASHBOARD
 export const DBCard = ({ children, className = "" }) => {
 	return (
 		<div
 			className={cn(
-				"grid grid-cols-2 p-2 w-55 h-28 rounded-md shadow-sm bg-zinc-600 shadow-zinc-600/50",
+				"grid grid-cols-2 p-3 xl:w-65 xl:h-37 lg:w-47 lg:h-25 rounded-md shadow-sm bg-zinc-600 shadow-zinc-600/50 md:w-50 sm:w-65",
 				className
 			)}
 		>
@@ -37,12 +51,12 @@ export const RightColumn = ({ children, className = "" }) => {
 	);
 };
 
-// for more info column
+// for button more info column
 export const BottomColumn = ({ children, className = "" }) => {
 	return (
 		<div
 			className={cn(
-				"col-span-2 text-[13px] self-center justify-center flex font-semibold mx-14 rounded-sm",
+				"col-span-2 text-[15px] self-center lg:hidden md:hidden sm:hidden justify-center xl:flex font-semibold mx-16 rounded-sm",
 				className
 			)}
 		>

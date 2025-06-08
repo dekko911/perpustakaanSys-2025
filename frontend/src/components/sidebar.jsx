@@ -5,6 +5,8 @@ import { SiBookstack } from "react-icons/si";
 import { Link, useLocation } from "react-router";
 import { cn } from "../lib/utils";
 import { ButtonLogout } from "./ui/button";
+import { ProfileCard } from "./ui/card";
+import { DefaultProfile } from "./ui/image";
 
 export const Sidebar = ({ className = "" }) => {
 	const location = useLocation();
@@ -34,7 +36,7 @@ export const Sidebar = ({ className = "" }) => {
 				Platform
 			</p>
 
-			<div className="p-2 text-sm font-semibold h-[74vh] flex flex-col gap-y-1.5">
+			<div className="p-2 text-sm font-semibold lg:h-[61vh] flex flex-col gap-y-1.5">
 				<Link
 					to="/dashboard"
 					className={`flex items-center gap-x-2 py-1.5 px-2 rounded-md hover:bg-white/30 ${location.pathname === "/dashboard" && `bg-white/15`}`}
@@ -83,6 +85,11 @@ export const Sidebar = ({ className = "" }) => {
 					Circulations
 				</Link>
 			</div>
+
+			<ProfileCard>
+				<DefaultProfile />
+				<Link className="mx-3 hover:text-blue-600 hover:underline">Admin</Link>
+			</ProfileCard>
 
 			<ButtonLogout />
 		</div>

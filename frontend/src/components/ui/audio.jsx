@@ -1,19 +1,17 @@
-import { useRef, useState } from "react";
+import { memo, useMemo, useRef, useState } from "react";
 import { FaPause, FaPlay } from "react-icons/fa";
 
-export const Audio = ({ audioSrc = "", audioType = "audio/wav" }) => {
+const AudioComponent = ({ audioSrc = "", audioType = "audio/wav" }) => {
 	const [isPlaying, setIsPlaying] = useState(false);
 	const audioRef = useRef(null); // useRef bagaikan id, tidak bisa ada dua useRef dalam atrributes ref.
 
-	// engken carane pang nyak ne me skip re-rendering dalam element body ? jancuk.
-
 	const handlePlay = () => {
-		audioRef.current.play();
+		audioRef.current?.play();
 		setIsPlaying(true);
 	};
 
 	const handlePause = () => {
-		audioRef.current.pause();
+		audioRef.current?.pause();
 		setIsPlaying(false);
 	};
 
@@ -24,41 +22,58 @@ export const Audio = ({ audioSrc = "", audioType = "audio/wav" }) => {
 	// 	audioRef.current.volume = volume;
 	// };
 
+	const audioElement = useMemo(
+		() => (
+			<audio ref={audioRef} loop>
+				<source src={audioSrc} type={audioType} />
+			</audio>
+		),
+		[audioSrc, audioType] // fungsi dependency untuk memantau jika props valuenya berubah, maka lakukan re rendering ulang / lakukan sesuatu pada kolom dependency itu.
+	);
+
+	const iconPlayPause = useMemo(
+		() => (isPlaying ? <FaPause /> : <FaPlay />),
+		[isPlaying]
+	);
+
+	const labelPlayPause = useMemo(
+		() => (isPlaying ? "Pause Song" : "Play Song"),
+		[isPlaying]
+	);
+
+	// this a range input volume.
+	// const inputVolume = useMemo(
+	// 	() => (
+	// 		<input
+	// 			className="cursor-pointer block ms-3"
+	// 			type="range"
+	// 			min={0}
+	// 			max={100}
+	// 			onChange={(e) => handleVolume(e)}
+	// 		/>
+	// 	),
+	// 	[]
+	// );
+
 	return (
 		<div
 			className={`absolute bottom-18 left-6 z-10 flex items-center ${isPlaying ? "animate-pulse" : ""}`}
 		>
-			<audio ref={audioRef} loop>
-				<source src={audioSrc} type={audioType} />
-			</audio>
+			{audioElement}
 
 			<button
 				className="cursor-pointer bg-white p-3 rounded-3xl text-black focus:outline-0"
-				onClick={() => {
-					if (isPlaying) {
-						handlePause();
-					} else {
-						handlePlay();
-					}
-				}}
+				onClick={isPlaying ? handlePause : handlePlay}
 			>
-				{isPlaying ? <FaPause /> : <FaPlay />}
+				{iconPlayPause}
 			</button>
 
-			{isPlaying ? (
-				<p className="ms-2">Pause Song</p>
-			) : (
-				<p className="ms-2">Play Song</p>
-			)}
+			<p className="ms-2">{labelPlayPause}</p>
 
 			{/* this use for adjust volume */}
-			{/* <input
-				className="cursor-pointer block ms-3"
-				type="range"
-				min={0}
-				max={100}
-				onChange={(e) => handleVolume(e)}
-			/> */}
+			{/* {inputVolume} */}
 		</div>
 	);
 };
+
+export const Audio = memo(AudioComponent);
