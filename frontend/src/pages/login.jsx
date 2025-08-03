@@ -20,16 +20,25 @@ export const LoginPage = () => {
 				<p className="text-white/50 text-center mb-8 text-sm">
 					Enter your email and password below to log in
 				</p>
-				<form>
-					<LabelLogin>Email address</LabelLogin>
+				<form method="post">
+					<LabelLogin>Email address or Username</LabelLogin>
 					<InputLogin
-						name="email"
-						type="email"
-						placeholder="email@example.com"
+						name="login"
+						type="text"
+						placeholder="email@example.com or username ..."
 					/>
 
 					<LabelLogin>Password</LabelLogin>
 					<InputLogin name="password" type="password" placeholder="*********" />
+
+					<div className="flex items-center gap-x-2">
+						<InputLogin
+							type="checkbox"
+							className="focus:outline-0 py-0 px-0 mb-0 mt-0 w-3"
+							name="remember"
+						/>
+						<LabelLogin>Remember Me</LabelLogin>
+					</div>
 
 					<ButtonLogin>Log in</ButtonLogin>
 				</form>

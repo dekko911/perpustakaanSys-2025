@@ -21,11 +21,12 @@ export const BooksPage = () => {
 					<TableHead>
 						<TableRow>
 							<THeadCell>No.</THeadCell>
-							<THeadCell>Book Id (slug)</THeadCell>
-							<THeadCell>Title Book</THeadCell>
-							<THeadCell>Author</THeadCell>
-							<THeadCell>Publisher</THeadCell>
-							<THeadCell>Year</THeadCell>
+							<THeadCell>Id Buku</THeadCell>
+							<THeadCell>Judul Buku</THeadCell>
+							<THeadCell>Cover Buku</THeadCell>
+							<THeadCell>Penulis</THeadCell>
+							<THeadCell>Pengarang</THeadCell>
+							<THeadCell>Tahun</THeadCell>
 							<THeadCell className="border-none">Action</THeadCell>
 						</TableRow>
 					</TableHead>

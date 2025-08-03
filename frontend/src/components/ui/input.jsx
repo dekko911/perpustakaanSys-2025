@@ -4,7 +4,9 @@ export const Input = ({
 	name = "",
 	type = "text",
 	defaultValue,
-	className,
+	className = "",
+	placeholder,
+	autoComplete,
 	...props
 }) => {
 	return (
@@ -12,7 +14,12 @@ export const Input = ({
 			name={name}
 			type={type}
 			defaultValue={defaultValue}
-			className={cn("w-full", className)}
+			className={cn(
+				"w-full border-1 border-white rounded-md text-white px-3 my-2 h-10",
+				className
+			)}
+			placeholder={placeholder}
+			autoComplete={autoComplete}
 			{...props}
 		/>
 	);
@@ -22,8 +29,9 @@ export const InputLogin = ({
 	name = "",
 	type = "text",
 	placeholder = "",
+	id = "",
 	defaultValue,
-	className,
+	className = "",
 	...props
 }) => {
 	return (
@@ -32,7 +40,7 @@ export const InputLogin = ({
 			type={type}
 			defaultValue={defaultValue}
 			placeholder={placeholder}
-			autoComplete="current-password"
+			id={id}
 			className={cn(
 				"focus:outline-2 focus:outline-zinc-400/20 w-full bg-transparent text-white rounded-lg py-1.5 border border-zinc-500/50 px-3 mb-5 mt-2",
 				className
@@ -47,7 +55,8 @@ export const InputSignUp = ({
 	type = "text",
 	placeholder = "",
 	defaultValue,
-	className,
+	id = "",
+	className = "",
 	...props
 }) => {
 	return (
@@ -56,6 +65,7 @@ export const InputSignUp = ({
 			type={type}
 			defaultValue={defaultValue}
 			placeholder={placeholder}
+			id={id}
 			autoComplete="current-password"
 			className={cn(
 				"focus:outline-2 focus:outline-zinc-400/20 w-full bg-transparent text-white rounded-lg py-1.5 text-sm border border-zinc-500/50 px-3 mb-4 mt-1.5",

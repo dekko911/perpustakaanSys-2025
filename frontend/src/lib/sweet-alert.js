@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 
-// export const ?Name? = () => {
+// export const Name? = () => {
 //     return (
 
 //     )

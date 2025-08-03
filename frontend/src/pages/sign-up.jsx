@@ -30,15 +30,19 @@ export const SignUpPage = () => {
 						placeholder="email@example.com"
 					/>
 
+					<LabelSignUp>Username</LabelSignUp>
+					<InputSignUp
+						type="text"
+						name="username"
+						placeholder="input your username ..."
+					/>
+
 					<LabelSignUp>Password</LabelSignUp>
 					<InputSignUp
 						type="password"
 						name="password"
 						placeholder="*********"
 					/>
-
-					<LabelSignUp>Roles</LabelSignUp>
-					<InputSignUp type="text" name="roles" placeholder="operator & user" />
 
 					<ButtonSignUp>Create account</ButtonSignUp>
 				</form>

@@ -26,6 +26,8 @@ export const UsersPage = () => {
 							<THeadCell>Name</THeadCell>
 							<THeadCell>Email</THeadCell>
 							<THeadCell>Roles</THeadCell>
+							<THeadCell>Permissions</THeadCell>
+							<THeadCell>Avatar Profile</THeadCell>
 							<THeadCell className="border-none">Action</THeadCell>
 						</TableRow>
 					</TableHead>

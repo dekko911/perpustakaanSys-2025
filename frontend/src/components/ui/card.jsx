@@ -1,16 +1,18 @@
+import { Link } from "react-router";
 import { cn } from "../../lib/utils";
 
 // this card profile
 export const ProfileCard = ({ className = "", children }) => {
 	return (
-		<div
+		<Link
+			to="/profile"
 			className={cn(
-				"bg-zinc-500/50 w-50 py-3.5 px-3 flex items-center mb-2.5 mx-auto rounded-lg",
+				"bg-zinc-500/50 w-50 py-3.5 px-3 grid grid-cols-3 items-center mb-2.5 mx-auto rounded-lg",
 				className
 			)}
 		>
 			{children}
-		</div>
+		</Link>
 	);
 };
 

@@ -3,9 +3,16 @@ import { MdLogout } from "react-icons/md";
 import { Link } from "react-router";
 import { cn } from "../../lib/utils";
 
-export const ButtonLogin = ({ className, onClick, children, ...props }) => {
+export const ButtonLogin = ({
+	type = "submit",
+	className,
+	onClick,
+	children,
+	...props
+}) => {
 	return (
 		<button
+			type={type}
 			className={cn(
 				"w-full bg-white text-black py-2 rounded-md text-base font-semibold mt-5 hover:bg-white/80 cursor-pointer hover:text-black/80",
 				className
@@ -57,5 +64,16 @@ export const ButtonDashboard = ({ to, className = "" }) => {
 			More Info
 			<FiExternalLink />
 		</Link>
+	);
+};
+
+export const ButtonProfile = ({ className = "", children, ...props }) => {
+	return (
+		<button
+			className={cn("border-1 h-10 px-3 rounded-lg cursor-pointer", className)}
+			{...props}
+		>
+			{children}
+		</button>
 	);
 };

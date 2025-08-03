@@ -4,7 +4,7 @@ import { cn } from "../lib/utils";
 
 export const Footer = ({ className = "" }) => {
 	return (
-		<div
+		<footer
 			className={cn(
 				"bg-transparent py-2 px-4 flex justify-between text-white/80",
 				className
@@ -42,6 +42,6 @@ export const Footer = ({ className = "" }) => {
 					<FaGithub />
 				</Link>
 			</div>
-		</div>
+		</footer>
 	);
 };

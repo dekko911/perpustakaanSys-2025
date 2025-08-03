@@ -10,6 +10,7 @@
 		}
 	],
 	"settings": {
-		"liveServer.settings.multiRootWorkspaceName": "frontend"
+		"liveServer.settings.multiRootWorkspaceName": "frontend",
+		"php.version": "8.3"
 	}
 }

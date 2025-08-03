@@ -24,12 +24,12 @@ export const CirculationsPage = () => {
 					<TableHead>
 						<TableRow>
 							<THeadCell>No.</THeadCell>
-							<THeadCell>SKL Id (slug)</THeadCell>
-							<THeadCell>Book</THeadCell>
-							<THeadCell>Borrowers</THeadCell>
-							<THeadCell>Borrowing Date</THeadCell>
-							<THeadCell>Due Date</THeadCell>
-							<THeadCell>Fines</THeadCell>
+							<THeadCell>Id SKL</THeadCell>
+							<THeadCell>Buku</THeadCell>
+							<THeadCell>Peminjam</THeadCell>
+							<THeadCell>Tanggal Pinjam</THeadCell>
+							<THeadCell>Jatuh Tempo</THeadCell>
+							<THeadCell>Denda</THeadCell>
 							<THeadCell className="border-none">Action</THeadCell>
 						</TableRow>
 					</TableHead>

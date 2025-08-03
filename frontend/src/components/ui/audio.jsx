@@ -57,7 +57,7 @@ const AudioComponent = ({ audioSrc = "", audioType = "audio/wav" }) => {
 
 	return (
 		<div
-			className={`absolute bottom-18 left-6 z-10 flex items-center ${isPlaying ? "animate-pulse" : ""}`}
+			className={`absolute bottom-18 left-6 z-10 flex items-center ${isPlaying ? "animate-pulse" : "animate-none"}`}
 		>
 			{audioElement}
 

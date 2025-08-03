@@ -1,11 +1,8 @@
 import { cn } from "../../lib/utils";
 
-export const DefaultProfile = ({ className = "" }) => {
-	return (
-		<img
-			src="/src/assets/images/profile.png"
-			alt="profile"
-			className={cn("w-11", className)}
-		/>
-	);
+export const PhotoContainer = ({
+	className = "",
+	imageSrc = "/src/assets/images/profile.png",
+}) => {
+	return <img src={imageSrc} alt="profile" className={cn("w-11", className)} />;
 };

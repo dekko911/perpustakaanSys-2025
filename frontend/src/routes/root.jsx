@@ -4,7 +4,7 @@ import { CirculationsPage } from "../pages/circulations";
 import { DashboardPage } from "../pages/dashboard";
 import { LoginPage } from "../pages/login";
 import { MembersPage } from "../pages/members";
-import { RolesPage } from "../pages/roles";
+import { ProfilePage } from "../pages/profile";
 import { SignUpPage } from "../pages/sign-up";
 import { UsersPage } from "../pages/users";
 
@@ -22,7 +22,7 @@ export const RootRoute = () => {
 
 				<Route path="/members" element={<MembersPage />} />
 
-				<Route path="/roles" element={<RolesPage />} />
+				<Route path="/profile" element={<ProfilePage />} />
 
 				<Route path="/sign-up" element={<SignUpPage />} />
 

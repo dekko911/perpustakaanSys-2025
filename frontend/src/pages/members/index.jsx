@@ -21,11 +21,12 @@ export const MembersPage = () => {
 					<TableHead>
 						<TableRow>
 							<THeadCell>No.</THeadCell>
-							<THeadCell>Member Id (slug)</THeadCell>
-							<THeadCell>Name</THeadCell>
-							<THeadCell>Gender (L/P)</THeadCell>
-							<THeadCell>Grade</THeadCell>
-							<THeadCell>No Hanphone</THeadCell>
+							<THeadCell>Id Anggota</THeadCell>
+							<THeadCell>Nama</THeadCell>
+							<THeadCell>Jenis Kelamin</THeadCell>
+							<THeadCell>Kelas</THeadCell>
+							<THeadCell>No Telepon</THeadCell>
+							<THeadCell>Foto Anggota</THeadCell>
 							<THeadCell className="border-none">Action</THeadCell>
 						</TableRow>
 					</TableHead>

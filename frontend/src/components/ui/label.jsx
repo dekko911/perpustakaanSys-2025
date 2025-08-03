@@ -1,7 +1,11 @@
-export const LabelLogin = ({ htmlFor = "", children }) => {
-	return <label htmlFor={htmlFor}>{children}</label>;
+export const LabelLogin = ({ children }) => {
+	return <label>{children}</label>;
 };
 
-export const LabelSignUp = ({ htmlFor = "", children }) => {
-	return <label htmlFor={htmlFor}>{children}</label>;
+export const LabelSignUp = ({ children }) => {
+	return <label>{children}</label>;
+};
+
+export const Label = ({ children }) => {
+	return <label>{children}</label>;
 };

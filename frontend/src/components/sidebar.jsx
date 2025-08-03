@@ -3,10 +3,11 @@ import { FaUsersGear } from "react-icons/fa6";
 import { MdCardMembership, MdDashboard } from "react-icons/md";
 import { SiBookstack } from "react-icons/si";
 import { Link, useLocation } from "react-router";
+import LogoBook from "../assets/images/bookshead.png";
 import { cn } from "../lib/utils";
 import { ButtonLogout } from "./ui/button";
 import { ProfileCard } from "./ui/card";
-import { DefaultProfile } from "./ui/image";
+import { PhotoContainer } from "./ui/image";
 
 export const Sidebar = ({ className = "" }) => {
 	const location = useLocation();
@@ -22,11 +23,7 @@ export const Sidebar = ({ className = "" }) => {
 				to="/dashboard"
 				className="flex items-center rounded-lg hover:bg-white/15 ms-2 me-3 py-1"
 			>
-				<img
-					src="/src/assets/images/bookshead.png"
-					alt="logo"
-					className="w-13"
-				/>
+				<img src={LogoBook} alt="logo" className="w-13" />
 				<h1 className="font-bold text-xl text-shadow-2xs text-shadow-amber-800/40">
 					Per<span className="text-amber-800">Pustakaan</span>
 				</h1>
@@ -36,7 +33,7 @@ export const Sidebar = ({ className = "" }) => {
 				Platform
 			</p>
 
-			<div className="p-2 text-sm font-semibold lg:h-[61vh] flex flex-col gap-y-1.5">
+			<div className="p-2 text-sm font-semibold xl:h-[61vh] lg:h-[61vh] md:h-[61vh] sm:h-[61vh] flex flex-col gap-y-1.5">
 				<Link
 					to="/dashboard"
 					className={`flex items-center gap-x-2 py-1.5 px-2 rounded-md hover:bg-white/30 ${location.pathname === "/dashboard" && `bg-white/15`}`}
@@ -51,14 +48,6 @@ export const Sidebar = ({ className = "" }) => {
 				>
 					<FaUsers className="w-5 h-5" />
 					Users
-				</Link>
-
-				<Link
-					to="/roles"
-					className={`flex items-center gap-x-2 py-1.5 px-2 rounded-md hover:bg-white/30 ${location.pathname === "/roles" && `bg-white/15`}`}
-				>
-					<FaUsersGear className="w-5 h-5" />
-					Roles
 				</Link>
 
 				<Link
@@ -86,9 +75,14 @@ export const Sidebar = ({ className = "" }) => {
 				</Link>
 			</div>
 
-			<ProfileCard>
-				<DefaultProfile />
-				<Link className="mx-3 hover:text-blue-600 hover:underline">Admin</Link>
+			<ProfileCard
+				className={location.pathname === "/profile" && "bg-white/15"}
+			>
+				<PhotoContainer />
+				<div className="col-span-2">
+					<p className="text-md">Admin</p>
+					<p className="text-xs">admin@admin.com</p>
+				</div>
 			</ProfileCard>
 
 			<ButtonLogout />

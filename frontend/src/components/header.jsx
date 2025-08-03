@@ -8,10 +8,11 @@ export const Header = ({ className = "" }) => {
 	const location = useLocation();
 
 	return (
-		<div
+		<header
 			className={cn(
 				"w-full bg-transparent z-10 py-4 px-5 text-white flex justify-between",
-				className
+				className,
+				location.pathname === "/profile" && "hidden"
 			)}
 		>
 			<div className="flex items-center gap-x-1.5 text-lg">
@@ -20,7 +21,6 @@ export const Header = ({ className = "" }) => {
 					(location.pathname === "/users" && <FaUsers />) ||
 					(location.pathname === "/books" && <SiBookstack />) ||
 					(location.pathname === "/circulations" && <FaSyncAlt />) ||
-					(location.pathname === "/roles" && <FaUserSecret />) ||
 					(location.pathname === "/members" && <MdCardMembership />)}
 
 				{/* path url name */}
@@ -29,14 +29,15 @@ export const Header = ({ className = "" }) => {
 						(location.pathname === "/users" && "Users") ||
 						(location.pathname === "/books" && "Books") ||
 						(location.pathname === "/circulations" && "Circulations") ||
-						(location.pathname === "/roles" && "Roles") ||
 						(location.pathname === "/members" && "Members")}
 				</h1>
 			</div>
 
-			<h1 className="flex items-center gap-x-1 text-sm pe-3">
+			<h1
+				className={`flex items-center gap-x-1 text-sm pe-3 ${location.pathname === "/profile" && "hidden"}`}
+			>
 				<FaUser /> (for user role)
 			</h1>
-		</div>
+		</header>
 	);
 };

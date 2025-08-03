@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Loading from "../../assets/images/loading.gif";
 import { Footer } from "../../components/footer";
 import { Header } from "../../components/header";
 import { Sidebar } from "../../components/sidebar";
@@ -14,11 +15,7 @@ export const AuthLayout = ({ children }) => {
 	if (isLoading) {
 		return (
 			<div className="bg-linear-90 h-screen w-full from-zinc-900 to-zinc-950 flex flex-col gap-y-2 items-center justify-center text-white text-2xl font-semibold">
-				<img
-					src="/src/assets/images/loading.gif"
-					alt="loading"
-					className="w-30 h-30"
-				/>
+				<img src={Loading} alt="loading" className="w-30 h-30" />
 				<p>Loading. . .</p>
 			</div>
 		);
