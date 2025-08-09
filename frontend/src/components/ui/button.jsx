@@ -2,6 +2,7 @@ import { FiExternalLink } from "react-icons/fi";
 import { MdLogout } from "react-icons/md";
 import { Link } from "react-router";
 import { cn } from "../../lib/utils";
+import { AiFillDelete } from "react-icons/ai";
 
 export const ButtonLogin = ({
 	type = "submit",
@@ -25,7 +26,12 @@ export const ButtonLogin = ({
 	);
 };
 
-export const ButtonSignUp = ({ className, onClick, children, ...props }) => {
+export const ButtonSignUp = ({
+	className = "",
+	onClick,
+	children,
+	...props
+}) => {
 	return (
 		<button
 			className={cn(
@@ -36,6 +42,14 @@ export const ButtonSignUp = ({ className, onClick, children, ...props }) => {
 			{...props}
 		>
 			{children}
+		</button>
+	);
+};
+
+export const ButtonDelete = ({ className = "" }) => {
+	return (
+		<button className={cn("cursor-pointer w-0 py-4", className)}>
+			<AiFillDelete className="w-15 h-7" />
 		</button>
 	);
 };
@@ -57,7 +71,7 @@ export const ButtonLogout = ({ className = "", onClick, ...props }) => {
 	);
 };
 
-// this button for DASHBOARD, and it's an static so no children
+// this button for DASHBOARD, and it's an static; So no children
 export const ButtonDashboard = ({ to, className = "" }) => {
 	return (
 		<Link to={to} className={cn("flex items-center gap-x-1", className)}>

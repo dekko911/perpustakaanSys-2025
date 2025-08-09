@@ -10,8 +10,8 @@ export const Table = ({ children, className = "" }) => {
 };
 
 // table row <tr>
-export const TableRow = ({ children, className = "" }) => {
-	return <tr className={cn("", className)}>{children}</tr>;
+export const TableRow = ({ children }) => {
+	return <tr>{children}</tr>;
 };
 
 // table head <thead>
@@ -51,7 +51,7 @@ export const TBodyCellAction = ({ children, className = "" }) => {
 	return (
 		<td
 			className={cn(
-				"py-3 border-b border-zinc-500/30 flex gap-x-1 justify-center",
+				"p-2 border-b border-zinc-500/30 grid grid-cols-2 items-center justify-center",
 				className
 			)}
 		>

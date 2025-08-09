@@ -11,12 +11,12 @@ export const SignUpPage = () => {
 				<img
 					src="/src/assets/images/bookshead.png"
 					alt="logo"
-					className="w-15 mx-auto mb-5"
+					className="w-15 mx-auto mb-1"
 				/>
 				<h1 className="text-center font-semibold text-xl mb-2">
 					Create an account
 				</h1>
-				<p className="text-white/50 text-center mb-6 text-sm">
+				<p className="text-white/50 mb-3 text-center text-sm">
 					Enter your details below to create your account
 				</p>
 				<form>
@@ -34,7 +34,7 @@ export const SignUpPage = () => {
 					<InputSignUp
 						type="text"
 						name="username"
-						placeholder="input your username ..."
+						placeholder="input your username. . ."
 					/>
 
 					<LabelSignUp>Password</LabelSignUp>
@@ -44,9 +44,16 @@ export const SignUpPage = () => {
 						placeholder="*********"
 					/>
 
-					<ButtonSignUp>Create account</ButtonSignUp>
+					<LabelSignUp>Confirm Password</LabelSignUp>
+					<InputSignUp
+						type="password"
+						name="password_confirmation"
+						placeholder="*********"
+					/>
+
+					<ButtonSignUp className="mt-3">Create account</ButtonSignUp>
 				</form>
-				<h1 className="text-center mt-5 text-sm">
+				<h1 className="text-center mt-3 text-sm">
 					Already have an account?
 					<Link
 						to="/"

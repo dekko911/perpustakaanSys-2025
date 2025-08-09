@@ -32,6 +32,8 @@ export const InputLogin = ({
 	id = "",
 	defaultValue,
 	className = "",
+	onKeyUp,
+	onChange,
 	...props
 }) => {
 	return (
@@ -41,6 +43,8 @@ export const InputLogin = ({
 			defaultValue={defaultValue}
 			placeholder={placeholder}
 			id={id}
+			onKeyUp={onKeyUp}
+			onChange={onChange}
 			className={cn(
 				"focus:outline-2 focus:outline-zinc-400/20 w-full bg-transparent text-white rounded-lg py-1.5 border border-zinc-500/50 px-3 mb-5 mt-2",
 				className
@@ -78,7 +82,8 @@ export const InputSignUp = ({
 };
 
 export const InputSearch = ({
-	onKeyUp,
+	name = "",
+	onChange,
 	placeholder = "",
 	className = "",
 	...props
@@ -86,12 +91,13 @@ export const InputSearch = ({
 	return (
 		<input
 			type="search"
+			name={name}
 			className={cn(
 				"w-50 border-1 border-zinc-500 text-sm px-2 rounded-md focus:outline-0 py-0.5",
 				className
 			)}
 			placeholder={placeholder}
-			onKeyUp={onKeyUp}
+			onChange={onChange}
 			{...props}
 		/>
 	);

@@ -7,8 +7,9 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+src/constants/*
 node_modules
-assets
+src/assets/*
 dist
 dist-ssr
 *.local

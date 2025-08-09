@@ -1,16 +1,23 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import Loading from "../../assets/images/loading.gif";
 import { Footer } from "../../components/footer";
 import { Header } from "../../components/header";
 import { Sidebar } from "../../components/sidebar";
 import { BackgroundGrids } from "../../components/ui/background-grids";
+import { API_TOKEN } from "../../constants/globalConstants";
 
 export const AuthLayout = ({ children }) => {
+	const navigate = useNavigate();
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
 		setIsLoading(false);
-	}, [isLoading]);
+
+		if (!API_TOKEN) {
+			navigate("/");
+		}
+	}, [navigate]);
 
 	if (isLoading) {
 		return (

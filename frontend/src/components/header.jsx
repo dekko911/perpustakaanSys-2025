@@ -1,7 +1,8 @@
-import { FaSyncAlt, FaUser, FaUsers, FaUserSecret } from "react-icons/fa";
+import { FaSyncAlt, FaUser, FaUsers } from "react-icons/fa";
 import { MdCardMembership, MdDashboard } from "react-icons/md";
 import { SiBookstack } from "react-icons/si";
 import { useLocation } from "react-router";
+import { LOGGED_ROLE } from "../constants/globalConstants";
 import { cn } from "../lib/utils";
 
 export const Header = ({ className = "" }) => {
@@ -36,7 +37,7 @@ export const Header = ({ className = "" }) => {
 			<h1
 				className={`flex items-center gap-x-1 text-sm pe-3 ${location.pathname === "/profile" && "hidden"}`}
 			>
-				<FaUser /> (for user role)
+				<FaUser /> {LOGGED_ROLE}
 			</h1>
 		</header>
 	);

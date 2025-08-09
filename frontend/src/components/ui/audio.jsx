@@ -3,7 +3,7 @@ import { FaPause, FaPlay } from "react-icons/fa";
 
 const AudioComponent = ({ audioSrc = "", audioType = "audio/wav" }) => {
 	const [isPlaying, setIsPlaying] = useState(false);
-	const audioRef = useRef(null); // useRef bagaikan id, tidak bisa ada dua useRef dalam atrributes ref.
+	const audioRef = useRef(null); // useRef bagaikan id, tidak bisa ada dua useRef dalam attributes ref.
 
 	const handlePlay = () => {
 		audioRef.current?.play();
@@ -28,7 +28,7 @@ const AudioComponent = ({ audioSrc = "", audioType = "audio/wav" }) => {
 				<source src={audioSrc} type={audioType} />
 			</audio>
 		),
-		[audioSrc, audioType] // fungsi dependency untuk memantau jika props valuenya berubah, maka lakukan re rendering ulang / lakukan sesuatu pada kolom dependency itu.
+		[audioSrc, audioType] // fungsi dependency untuk memantau jika props value nya berubah, maka lakukan re rendering ulang / lakukan sesuatu pada kolom dependency itu.
 	);
 
 	const iconPlayPause = useMemo(

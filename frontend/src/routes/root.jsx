@@ -7,6 +7,7 @@ import { MembersPage } from "../pages/members";
 import { ProfilePage } from "../pages/profile";
 import { SignUpPage } from "../pages/sign-up";
 import { UsersPage } from "../pages/users";
+import { CreateUserPage } from "../pages/users/create";
 
 export const RootRoute = () => {
 	return (
@@ -27,6 +28,7 @@ export const RootRoute = () => {
 				<Route path="/sign-up" element={<SignUpPage />} />
 
 				<Route path="/users" element={<UsersPage />} />
+				<Route path="/users/create" element={<CreateUserPage />} />
 			</Routes>
 		</BrowserRouter>
 	);

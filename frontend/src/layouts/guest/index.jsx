@@ -1,7 +1,7 @@
 import { BackgroundBeams } from "../../components/ui/background-beams";
 import { cn } from "../../lib/utils";
 
-export const GuestLayout = ({ className, children }) => {
+export const GuestLayout = ({ className = "", children }) => {
 	return (
 		<div
 			className={cn(

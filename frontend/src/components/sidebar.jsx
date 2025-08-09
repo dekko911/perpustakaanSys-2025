@@ -1,15 +1,21 @@
+import Cookies from "js-cookie";
 import { FaSyncAlt, FaUsers } from "react-icons/fa";
-import { FaUsersGear } from "react-icons/fa6";
 import { MdCardMembership, MdDashboard } from "react-icons/md";
 import { SiBookstack } from "react-icons/si";
-import { Link, useLocation } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import LogoBook from "../assets/images/bookshead.png";
 import { cn } from "../lib/utils";
 import { ButtonLogout } from "./ui/button";
 import { ProfileCard } from "./ui/card";
 import { PhotoContainer } from "./ui/image";
+import {
+	LOGGED_AVATAR,
+	LOGGED_EMAIL,
+	LOGGED_NAME,
+} from "../constants/globalConstants";
 
 export const Sidebar = ({ className = "" }) => {
+	const navigate = useNavigate();
 	const location = useLocation();
 
 	return (
@@ -78,14 +84,25 @@ export const Sidebar = ({ className = "" }) => {
 			<ProfileCard
 				className={location.pathname === "/profile" && "bg-white/15"}
 			>
-				<PhotoContainer />
+				<PhotoContainer imageSrc={LOGGED_AVATAR} />
 				<div className="col-span-2">
-					<p className="text-md">Admin</p>
-					<p className="text-xs">admin@admin.com</p>
+					<p className="text-md">{LOGGED_NAME}</p>
+					<p className="text-xs">{LOGGED_EMAIL}</p>
 				</div>
 			</ProfileCard>
 
-			<ButtonLogout />
+			<ButtonLogout
+				onClick={() => {
+					Cookies.remove("token");
+					Cookies.remove("name");
+					Cookies.remove("email");
+					Cookies.remove("username");
+					Cookies.remove("role");
+					Cookies.remove("avatar");
+
+					navigate("/");
+				}}
+			/>
 		</div>
 	);
 };
