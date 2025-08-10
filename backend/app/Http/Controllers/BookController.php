@@ -6,6 +6,7 @@ use App\Http\Requests\StoreBookRequest;
 use App\Http\Requests\UpdateBookRequest;
 use App\Models\Book;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -18,6 +19,13 @@ class BookController extends Controller
      */
     public function index()
     {
+        if (!Auth::user()->tokenCan('manage-books')) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'You not have an access.'
+            ], 403);
+        }
+
         $books = Book::latest('created_at')->where(function ($q) {
             $search = request('q');
 
@@ -44,6 +52,13 @@ class BookController extends Controller
      */
     public function show($id)
     {
+        if (!Auth::user()->tokenCan('manage-books')) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'You not have an access.'
+            ], 403);
+        }
+
         $book = Book::findOrFail($id);
 
         return response()->json([
@@ -142,6 +157,13 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
+        if (!Auth::user()->tokenCan('manage-books')) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'You not have an access.'
+            ], 403);
+        }
+
         if ($book->cover_buku) {
             Storage::disk('public')->delete("books/$book->cover_buku");
         }

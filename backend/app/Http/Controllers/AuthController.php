@@ -27,11 +27,7 @@ class AuthController extends Controller
      */
     protected function credentials(): array
     {
-        $login = $this->request->validate([
-            'login' => ['required'],
-        ], [
-            'login.required' => 'Masukkan Email Atau Username Anda!',
-        ]);
+        $login = $this->request->input('login');
 
         if (filter_var($login, FILTER_VALIDATE_EMAIL)) {
             return ['email' => $login, 'password' => $this->request->input('password')];
@@ -50,7 +46,7 @@ class AuthController extends Controller
         if (Auth::attempt($this->credentials(), $this->request->boolean('remember'))) {
             $user = User::where('email', $this->credentials())->orWhere('username', $this->credentials())->first();
 
-            $token = $user->createToken($user->name, (array) $user->permissions, now('Asia/Kuala_Lumpur')->addHours(6));
+            $token = $user->createToken($user->name, [$user->permissions], now('Asia/Kuala_Lumpur')->addHours(6));
 
             return response()->json([
                 'status' => 'success',
@@ -61,7 +57,7 @@ class AuthController extends Controller
 
         return response()->json([
             'status' => 'failed',
-            'message' => 'Salah Email || Username || Password !'
-        ]);
+            'message' => 'Salah Username/Email dan Password !'
+        ], 401);
     }
 }

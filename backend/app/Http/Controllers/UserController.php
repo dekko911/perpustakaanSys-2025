@@ -6,6 +6,7 @@ use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -18,7 +19,14 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::latest('created_at')->where(function ($q) {
+        if (!Auth::user()->tokenCan('manage-users')) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'You not have an access.'
+            ], 403);
+        }
+
+        $users = User::oldest('created_at')->where(function ($q) {
             $search = request('q');
 
             if ($search) {
@@ -44,6 +52,13 @@ class UserController extends Controller
      */
     public function show($id)
     {
+        if (!Auth::user()->tokenCan('manage-users')) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'You not have an access.'
+            ], 403);
+        }
+
         $user = User::findOrFail($id);
 
         return response()->json([
@@ -92,6 +107,14 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'username' => $request->username,
+            'role' => $request->role,
+            'permissions' => $request->permissions,
+        ]);
+
         if ($request->file('avatar')) {
             if ($user->avatar) {
                 Storage::disk('public')->delete("avatar/$user->avatar");
@@ -100,14 +123,6 @@ class UserController extends Controller
             $fileName = Str::random(70);
             $request->file('avatar')->storeAs('avatar', $fileName, 'public');
         }
-
-        $user->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'username' => $request->username,
-            'role' => $request->role,
-            'permissions' => $request->permissions,
-        ]);
 
         if ($request->password) {
             $user->update(['password' => $request->password]);
@@ -131,6 +146,13 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        if (!Auth::user()->tokenCan('manage-users')) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'You not have an access.'
+            ], 403);
+        }
+
         if ($user->avatar) {
             Storage::disk('public')->delete("avatar/$user->avatar");
         }

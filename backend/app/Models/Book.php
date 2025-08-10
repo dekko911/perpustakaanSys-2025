@@ -15,7 +15,7 @@ class Book extends Model
      * @var array<string>
      */
     protected $fillable = [
-        'id_buku',
+        'id_buku', // this slug
         'judul_buku',
         'cover_buku', // this image type
         'penulis',

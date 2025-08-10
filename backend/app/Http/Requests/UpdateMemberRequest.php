@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\JenisKelaminMember;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Enum;
 
 class UpdateMemberRequest extends FormRequest
 {
@@ -24,10 +26,10 @@ class UpdateMemberRequest extends FormRequest
         return [
             'id_anggota' => ['required'],
             'nama' => ['required'],
-            'jenis_kelamin' => ['required'],
+            'jenis_kelamin' => ['required', new Enum(JenisKelaminMember::class)],
             'kelas' => ['required'],
             'no_telepon' => ['required'],
-            'foto_anggota' => ['nullable', 'mimes:png,jpg,webp,jpeg', 'max:1024'],
+            'profil_anggota' => ['nullable', 'mimes:png,jpg,webp,jpeg', 'max:1024'],
         ];
     }
 
@@ -44,8 +46,8 @@ class UpdateMemberRequest extends FormRequest
             'jenis_kelamin.required' => 'Isi Jenis Kelamin Anda!',
             'kelas.required' => 'Masukkan Kelas Anda!',
             'no_telepon.required' => 'Masukkan No Telepon Anda!',
-            'foto_anggota.mimes' => 'File Haruslah Bertipe png,jpg,webp,jpeg.',
-            'foto_anggota.max' => 'Ukuran File Tidak Boleh Melebihi Dari 1mb.',
+            'profil_anggota.mimes' => 'File Haruslah Bertipe png,jpg,webp,jpeg.',
+            'profil_anggota.max' => 'Ukuran File Tidak Boleh Melebihi Dari 1mb.',
         ];
     }
 }

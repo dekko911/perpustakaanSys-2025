@@ -6,6 +6,7 @@ use App\Http\Requests\StoreCirculationRequest;
 use App\Http\Requests\UpdateCirculationRequest;
 use App\Models\Circulation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CirculationController extends Controller
 {
@@ -16,6 +17,13 @@ class CirculationController extends Controller
      */
     public function index()
     {
+        if (!Auth::user()->tokenCan('manage-circulations')) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'You not have an access.'
+            ], 403);
+        }
+
         $circulations = Circulation::latest('created_at')->with(['buku'])->where(function ($q) {
             $search = request('q');
 
@@ -43,6 +51,13 @@ class CirculationController extends Controller
      */
     public function show($id)
     {
+        if (!Auth::user()->tokenCan('manage-circulations')) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'You not have an access.'
+            ], 403);
+        }
+
         $circulation = Circulation::findOrFail($id);
 
         return response()->json([
@@ -94,6 +109,13 @@ class CirculationController extends Controller
      */
     public function destroy($id)
     {
+        if (!Auth::user()->tokenCan('manage-circulations')) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'You not have an access.'
+            ], 403);
+        }
+
         Circulation::destroy($id);
 
         return response()->json([

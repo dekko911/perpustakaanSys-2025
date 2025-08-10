@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\JenisKelaminMember;
 use App\Http\Requests\StoreMemberRequest;
 use App\Http\Requests\UpdateMemberRequest;
 use App\Models\Member;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -18,6 +20,13 @@ class MemberController extends Controller
      */
     public function index()
     {
+        if (!Auth::user()->tokenCan('manage-members')) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'You not have an access.'
+            ], 403);
+        }
+
         $members = Member::latest('created_at')->where(function ($q) {
             $search = request('q');
 
@@ -44,6 +53,13 @@ class MemberController extends Controller
      */
     public function show($id)
     {
+        if (!Auth::user()->tokenCan('manage-members')) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'You not have an access.'
+            ], 403);
+        }
+
         $member = Member::findOrFail($id);
 
         return response()->json([
@@ -60,18 +76,20 @@ class MemberController extends Controller
      */
     public function store(StoreMemberRequest $request)
     {
-        if ($request->file('foto_anggota')) {
+        if ($request->file('profil_anggota')) {
             $fileName = Str::random(70);
-            $request->file('foto_anggota')->storeAs('profile', $fileName, 'public');
+            $request->file('profil_anggota')->storeAs('profil', $fileName, 'public');
         }
+
+        $status = $request->enum('jenis_kelamin', JenisKelaminMember::class);
 
         $member = Member::create([
             'id_anggota' => $request->id_anggota,
             'nama' => $request->nama,
-            'jenis_kelamin' => $request->jenis_kelamin,
+            'jenis_kelamin' => $status,
             'kelas' => $request->kelas,
             'no_telepon' => $request->no_telepon,
-            'foto_anggota' => $fileName ?? '-',
+            'profil_anggota' => $fileName ?? '-',
         ]);
 
         return response()->json([
@@ -91,25 +109,27 @@ class MemberController extends Controller
     {
         $member = Member::findOrFail($id);
 
-        if ($request->file('foto_anggota')) {
-            if ($member->foto_anggota) {
-                Storage::disk('public')->delete("profile/$member->foto_anggota");
+        if ($request->file('profil_anggota')) {
+            if ($member->profil_anggota) {
+                Storage::disk('public')->delete("profil/$member->profil_anggota");
             }
 
             $fileName = Str::random(70);
-            $request->file('foto_anggota')->storeAs('profile', $fileName, 'public');
+            $request->file('profil_anggota')->storeAs('profil', $fileName, 'public');
         }
+
+        $status = $request->enum('jenis_kelamin', JenisKelaminMember::class);
 
         $member->update([
             'id_anggota' => $request->id_anggota,
             'nama' => $request->nama,
-            'jenis_kelamin' => $request->jenis_kelamin,
+            'jenis_kelamin' => $status,
             'kelas' => $request->kelas,
             'no_telepon' => $request->no_telepon,
         ]);
 
-        if ($request->foto_anggota) {
-            $member->update(['foto_anggota' => $fileName]);
+        if ($request->profil_anggota) {
+            $member->update(['profil_anggota' => $fileName]);
         }
 
         return response()->json([
@@ -126,8 +146,15 @@ class MemberController extends Controller
      */
     public function destroy(Member $member)
     {
-        if ($member->foto_anggota) {
-            Storage::disk('public')->delete("profile/$member->foto_anggota");
+        if (!Auth::user()->tokenCan('manage-members')) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'You not have an access.'
+            ], 403);
+        }
+
+        if ($member->profil_anggota) {
+            Storage::disk('public')->delete("profil/$member->profil_anggota");
         }
 
         Member::destroy($member->id);
